@@ -3,13 +3,17 @@ import SingleColor from "./SingleColor";
 import Values from "values.js";
 
 function App() {
+  const [count, setCount] = useState(10);
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
-  const [list, setList] = useState(new Values("#f35025").all(10));
+  const [list, setList] = useState(new Values("#f35025").all(count));
 
   function handleSubmit(e) {
+    
     try {
-      let colors = new Values(color).all(10);
+      let num = parseInt(count);
+      let colors = new Values(color).all(num);
+      console.log(colors.length);
       setList(colors);
     } catch (error) {
       setError(true);
@@ -28,6 +32,14 @@ function App() {
             placeholder="#f15025"
             value={color}
             onChange={(event) => setColor(event.target.value)}
+          />
+          <input
+            className="drop-down"
+            type="number"
+            name="amount"
+            id="amount"
+            value={count}
+            onChange={(event) => setCount(event.target.value)}
           />
           <button type="submit" className="btn">
             Submit

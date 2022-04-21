@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-function SingleColor({ rgb, weight, hexColor, index }) {
+function SingleColor({ rgb, weight, hexColor, index}) {
   let hexValue = `#${hexColor}`;
   const bcg = rgb.join(",");
-
   const [alert, setAlert] = useState(false);
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setAlert(false);
